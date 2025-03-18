@@ -57,7 +57,7 @@ async def update_players():
     await asyncio.sleep(2)
     pbar = tqdm(total=len(players), desc="WOM Updater", dynamic_ncols=True, unit="Member", bar_format=bar_format, colour="green")
     
-    for player in players.tail(2):
+    for player in players:
         pbar.update(1)
         pbar.set_description(f"Updating: {player}")
         response = client.post(CONFIG.player_url + player, timeout=30)
