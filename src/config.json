@@ -1,0 +1,7 @@
+{
+    "group_id" : 1500,
+    "base_url_group" : "https://api.wiseoldman.net/v2/groups/!/csv",
+    "base_url_player": "https://api.wiseoldman.net/v2/players/",
+    "interval_player": 4,
+    "interval_group": 3600
+}
