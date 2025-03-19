@@ -16,9 +16,14 @@ class Config:
     player_throttle: int
 
 def parse_config() -> Config:
-    file = "src/config.json"
-    with open(file, "r") as f:
-        data = json.load(f)
+    file = "config.json"
+    try:
+        with open(file, "r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        file = "src/config.json"
+        with open(file, "r") as f:
+            data = json.load(f)
     
     group_url: str = str(data["base_url_group"]).replace("!", str(data["group_id"]))
     player_url: str = data["base_url_player"]
@@ -32,7 +37,7 @@ bar_format = "{l_bar}{bar} | {n_fmt}/{total_fmt} [{elapsed} - {remaining} {rate_
 
 async def handle_ratelimit(response):
     if response.status_code == 429:
-        logger.error("\nRatelimited, Retrying in 5 Seconds.")
+        logger.error("\nRatelimited or Recently Refreshed, Retrying in 5 seconds.")
         await asyncio.sleep(5)
         return True
     return False
