@@ -17,4 +17,4 @@
 
 (**Optional** if using venv, must be in active environment `.venv/Scripts/activate`)
 
-**Running** `setup.bat` enables the script as a headless background service on startup. Alongside creating a python VENV.
+**Running** `setup.bat` enables the script on startup. Alongside creating a python VENV.
